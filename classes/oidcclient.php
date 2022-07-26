@@ -203,7 +203,17 @@ class oidcclient {
         global $DB;
         $staterec = new \stdClass;
         $staterec->sesskey = sesskey();
+
+        // XTEC ************ MODIFICAT - Added school code to state
+        // 2022.07.26 @aginard
+        global $CFG;
+        $staterec->state = random_string(7) . $CFG->center;
+        // ************ ORIGINAL
+        /*
         $staterec->state = random_string(15);
+        */
+        // ************ FI
+
         $staterec->nonce = $nonce;
         $staterec->timecreated = time();
         $staterec->additionaldata = serialize($stateparams);
