@@ -449,6 +449,13 @@ class base {
         $clientsecret = (isset($this->config->clientsecret)) ? $this->config->clientsecret : null;
         $redirecturi = (!empty($CFG->loginhttps)) ? str_replace('http://', 'https://', $CFG->wwwroot) : $CFG->wwwroot;
         $redirecturi .= '/auth/oidc/';
+
+        // XTEC ************ AFEGIT - Customized redirect URI
+        // 2022.07.26 @aginard
+        global $agora;
+        $redirecturi = $agora['server']['server'] . '/portal/oidc.php';
+        // ************ FI
+
         $tokenresource = (isset($this->config->oidcresource)) ? $this->config->oidcresource : null;
         $scope = (isset($this->config->oidcscope)) ? $this->config->oidcscope : null;
 

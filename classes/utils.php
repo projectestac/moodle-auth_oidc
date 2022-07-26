@@ -134,6 +134,13 @@ class utils {
      */
     public static function get_redirecturl() {
         $redirecturl = new \moodle_url('/auth/oidc/');
+
+        // XTEC ************ AFEGIT - Customized redirect URI
+        // 2022.07.26 @aginard
+        global $agora;
+        $redirecturl = new \moodle_url($agora['server']['server'] . '/portal/oidc.php');
+        // ************ FI
+
         return $redirecturl->out(false);
     }
 
